@@ -23,6 +23,7 @@
 
         <!-- Price -->
         <div class="form-group mb-3">
+            <p style="color:red" th:errors="*{price}"> </p>
             <label for="price">Price</label>
             <input type="number" class="form-control" id="price" placeholder="Enter item price." step="0.01" th:field="*{price}">
         </div>
