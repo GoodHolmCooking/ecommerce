@@ -25,6 +25,7 @@ public class InventoryService {
     }
 
     public InventoryItem getItem(ObjectId objectId) {
+        if (objectId == null) return new InventoryItem();
         return inventoryRepository.findById(objectId).orElse(new InventoryItem());
     }
 
