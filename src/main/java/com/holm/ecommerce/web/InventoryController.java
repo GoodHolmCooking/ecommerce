@@ -1,4 +1,4 @@
-package com.holm.ecommerce.controller;
+package com.holm.ecommerce.web;
 
 import com.holm.ecommerce.pojo.InventoryItem;
 import com.holm.ecommerce.service.InventoryService;
