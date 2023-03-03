@@ -8,31 +8,31 @@
 <body>
 
 <div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" th:href="@{/inventory}">Inventory</a>
-</nav>
-<div class="container">
-    <form method="post" th:object="${inventoryItem}" th:action="@{/handleSubmit}">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#" th:href="@{/inventory}">Inventory</a>
+    </nav>
+    <div class="container">
+        <form method="post" th:object="${product}" th:action="@{/handleSubmit}">
 
-        <!-- Name -->
-        <div class="form-group mb-3">
-            <p style="color:red" th:errors="*{name}"> </p>
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter item name." th:field="*{name}">
-        </div>
+            <!-- Name -->
+            <div class="form-group mb-3">
+                <p style="color:red" th:errors="*{name}"> </p>
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter item name." th:field="*{name}">
+            </div>
 
-        <!-- Price -->
-        <div class="form-group mb-3">
-            <p style="color:red" th:errors="*{price}"> </p>
-            <label for="price">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter item price." step="0.01" th:field="*{price}">
-        </div>
+            <!-- Price -->
+            <div class="form-group mb-3">
+                <p style="color:red" th:errors="*{price}"> </p>
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" placeholder="Enter item price." step="0.01" th:field="*{price}">
+            </div>
 
-        <input type="hidden" th:field="*{objectId}" />
+            <input type="hidden" th:field="*{objectId}" />
 
-        <input type="submit" class="btn btn-primary" value="Submit">
-    </form>
-</div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
 </div>
 </body>
 </html>

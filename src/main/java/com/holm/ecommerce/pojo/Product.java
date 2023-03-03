@@ -1,43 +1,42 @@
 package com.holm.ecommerce.pojo;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.NoArgsConstructor;
 import org.springframework.util.StringUtils;
 
 @Data
 @AllArgsConstructor
-@Document(collection = "inventory")
-public class InventoryItem {
-    @Id
-    private ObjectId objectId;
+@NoArgsConstructor
+@Entity
+@Table(name = "product", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name"})
+})
+public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
     @NotBlank(message = "Item must have a name.")
     private String name;
 
+    @Column(name = "price_string")
     private String priceString;
 
-    // Not reading this validation due to receiving []. Beyond scope to fix bug. UI being updated in the future.
     @NotNull(message = "Item must have a price. For free items. Enter 0.")
+    @Column(name = "price")
     private Double price;
-
-    public InventoryItem() {
-        generateId();
-    }
 
     public void setName(String name) {
         this.name = StringUtils.capitalize(name.toLowerCase());
     }
 
-    private void generateId() {
-        if (this.objectId == null) {
-            this.objectId = new ObjectId();
-        }
-    }
 
     public void setPrice(Double price) {
         this.price = price;
